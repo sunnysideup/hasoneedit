@@ -24,7 +24,7 @@ class UpdateFormExtension extends Extension
         $record = $form->getRecord();
         $fieldList = $form->Fields();
 
-        foreach ($fieldList->dataFields() as $name => $field) {
+        foreach ($fieldList->getDataFields() as $name => $field) {
             $name = HasOneEdit::normaliseSeparator($name);
             if (!HasOneEdit::isHasOneEditField($name)) {
                 continue;
@@ -38,7 +38,7 @@ class UpdateFormExtension extends Extension
             }
 
             // Skip populating value if record doesn't exist yet, or field already has value
-            if (!$record || $field->Value()) {
+            if (!$record || $field->getValue()) {
                 continue;
             }
 
